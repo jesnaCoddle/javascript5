@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
         const name = 'Your Name';
         const age = 'Your Age';
-        const city = 'Your City'; 
+        const city = 'Your City';
 
         detailsDiv.innerHTML = `
         <p>Name: ${name}</p>
@@ -56,17 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //3
 
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.createElement('button');
-    toggleButton.textContent = 'Toggle';
-    document.body.appendChild(toggleButton);
+const myButton = document.getElementById("myButton");
+let toggleState = false;
 
-    let toggleState = false;
+myButton.addEventListener("click", () => {
+    toggleState = !toggleState;
+    if (toggleState) {
+        myButton.textContent = "On";
+    } else {
+        myButton.textContent = "Off";
+    }
 
-    toggleButton.addEventListener('click', () => {
-        toggleState = !toggleState;
-        console.log(toggleState);
-    });
+    console.log(toggleState);
 });
 
 //4
