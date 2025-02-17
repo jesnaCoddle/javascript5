@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(detailsDiv);
 
     button.addEventListener('click', () => {
-        const name = 'Your Name';
-        const age = 'Your Age';
-        const city = 'Your City';
+        const name = 'Jesna Joseph';
+        const age = '22';
+        const city = 'Calicut';
 
         detailsDiv.innerHTML = `
         <p>Name: ${name}</p>
@@ -81,14 +81,20 @@ function initializeSlider() {
     if (slides.length > 0) {
         slides[slideIndex].classList.add("displaySlide");
         intervalId = setInterval(nextSlide, 5000);
+
+        // Add event listeners for the buttons
+        const prevButton = document.querySelector(".prev");
+        const nextButton = document.querySelector(".next");
+
+        prevButton.addEventListener("click", prevSlide);
+        nextButton.addEventListener("click", nextSlide);
     }
 }
 
 function showSlide(index) {
     if (index >= slides.length) {
         slideIndex = 0;
-    }
-    else if (index < 0) {
+    } else if (index < 0) {
         slideIndex = slides.length - 1;
     }
 
@@ -99,12 +105,15 @@ function showSlide(index) {
 }
 
 function prevSlide() {
-    clearInterval(intervalId);
+    clearInterval(intervalId); // Clear interval before changing slide
     slideIndex--;
     showSlide(slideIndex);
+    intervalId = setInterval(nextSlide, 5000); // Restart the interval
 }
 
 function nextSlide() {
+    clearInterval(intervalId); // Clear interval before changing slide
     slideIndex++;
     showSlide(slideIndex);
+    intervalId = setInterval(nextSlide, 5000); // Restart the interval
 }
