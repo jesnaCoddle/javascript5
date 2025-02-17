@@ -71,49 +71,23 @@ myButton.addEventListener("click", () => {
 });
 
 //4
-const slides = document.querySelectorAll(".slides img");
-let slideIndex = 0;
-let intervalId = null;
 
-document.addEventListener("DOMContentLoaded", initializeSlider);
+var i=0;
+var images =[];
+var time=3000;
 
-function initializeSlider() {
-    if (slides.length > 0) {
-        slides[slideIndex].classList.add("displaySlide");
-        intervalId = setInterval(nextSlide, 5000);
+images[0]='images\aston-martin.jpg';
+images[1]='images\maserati-mc20.jpg';
+images[2]='images\nio-et5.jpg';
 
-        // Add event listeners for the buttons
-        const prevButton = document.querySelector(".prev");
-        const nextButton = document.querySelector(".next");
-
-        prevButton.addEventListener("click", prevSlide);
-        nextButton.addEventListener("click", nextSlide);
+function changeImg(){
+    document.hasChildNodes.src=images[i];
+    if(i<images.length-1){
+        i++;
     }
-}
-
-function showSlide(index) {
-    if (index >= slides.length) {
-        slideIndex = 0;
-    } else if (index < 0) {
-        slideIndex = slides.length - 1;
+    else{
+        i=0;
     }
-
-    slides.forEach(slide => {
-        slide.classList.remove("displaySlide");
-    });
-    slides[slideIndex].classList.add("displaySlide");
+    setTimeout("changeImg()",time)
 }
-
-function prevSlide() {
-    clearInterval(intervalId); // Clear interval before changing slide
-    slideIndex--;
-    showSlide(slideIndex);
-    intervalId = setInterval(nextSlide, 5000); // Restart the interval
-}
-
-function nextSlide() {
-    clearInterval(intervalId); // Clear interval before changing slide
-    slideIndex++;
-    showSlide(slideIndex);
-    intervalId = setInterval(nextSlide, 5000); // Restart the interval
-}
+window.onload=changeImg;
