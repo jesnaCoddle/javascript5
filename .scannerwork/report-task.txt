@@ -2,5 +2,5 @@ projectKey=javascript5
 serverUrl=http://localhost:9099
 serverVersion=25.2.0.102705
 dashboardUrl=http://localhost:9099/dashboard?id=javascript5
-ceTaskId=2417e4df-5c9e-441d-8328-3c77967ef098
-ceTaskUrl=http://localhost:9099/api/ce/task?id=2417e4df-5c9e-441d-8328-3c77967ef098
+ceTaskId=88c3a9c6-2660-4c7a-8098-daf45c03a8ad
+ceTaskUrl=http://localhost:9099/api/ce/task?id=88c3a9c6-2660-4c7a-8098-daf45c03a8ad
