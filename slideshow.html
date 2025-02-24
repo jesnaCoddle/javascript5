@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <style>
+        body,
+        #slider,
+        .wrap,
+        .slide-content {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            position: relative;
+        }
+
+        .slide {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%; 
+            height: 100vh; 
+            display: none; 
+        }
+
+        .slide1 {
+            background-image: url(images/image1.jpg);
+        }
+
+        .slide2 {
+            background-image: url(images/image2.jpg);
+        }
+
+        .slide3 {
+            background-image: url(images/image3.jpg);
+        }
+
+      
+        .arrow {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        #arrow-left {
+            border-width: 30px 40px 30px 0;
+            left: 0;
+            margin-left: 30px;
+            border-color: transparent white transparent transparent;
+        }
+
+        #arrow-right {
+            border-width: 30px 0px 30px 40px;
+            right: 0;
+            margin-right: 30px;
+            border-color: transparent transparent transparent white;
+        }
+    </style>
+
+<body>
+    <div class="wrap">
+        <div id="arrow-left" class="arrow"></div>
+        <div id="slider">
+            <div class="slide slide1">
+                
+            </div>
+            <div class="slide slide2">
+               
+            </div>
+            <div class="slide slide3">
+               
+            </div>
+        </div>
+        <div id="arrow-right" class="arrow"></div>
+    </div>
+
+    <script>
+        let slideImages = document.querySelectorAll('.slide'),
+            arrowLeft = document.querySelector('#arrow-left'),
+            arrowRight = document.querySelector('#arrow-right'),
+            current = 0;
+
+        function reset() {
+            slideImages.forEach(slide => slide.style.display = 'none');
+        }
+
+        function startSlider() {
+            reset();
+            slideImages[0].style.display = 'block';
+        }
+
+        startSlider();
+
+        function slideLeft() {
+            current--;
+            if (current < 0) {
+                current = slideImages.length - 1;
+            }
+            reset();
+            slideImages[current].style.display = 'block';
+        }
+
+        function slideRight() {
+            current++;
+            if (current >= slideImages.length) {
+                current = 0;
+            }
+            reset();
+            slideImages[current].style.display = 'block';
+        }
+
+        arrowLeft.addEventListener('click', slideLeft);
+        arrowRight.addEventListener('click', slideRight);
+    </script>
+</body>
+
+</html>
